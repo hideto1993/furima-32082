@@ -48,7 +48,7 @@
 
 | Column                    | Type       | Options           |
 |---------------------------|------------|-------------------|
-| prefectures               | string     | null: false       |
+| prefectures               | integer     | null: false       |
 | municipalities            | string     | null: false       |
 | address                   | string     | null: false       |
 | building_number           | string     | null: false       |
