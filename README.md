@@ -11,7 +11,7 @@
 | second_name               | string     | null: false       |
 | first_name_kana           | string     | null: false       |
 | second_name_kana          | string     | null: false       |
-| birthday                  | integer    | null: false       |
+| birthday                  | date    | null: false       |
 
 * has_many :items
 * has_many :purchases
@@ -24,14 +24,14 @@
 | category_id               | integer    | null: false       |
 | status_id                 | integer    | null: false       |
 | price                     | integer    | null: false       |
-| burden fee_id             | integer    | null: false       |
-| shipping_area_id          | integer    | null: false       |
+| burden_fee_id             | integer    | null: false       |
+| prefectures_id          | integer    | null: false       |
 | shipping_date_and_time_id | integer    | null: false       |
 | explanation               | text       | null: false       |
 | user                      | references | foreign_key: true |
 
-- belongs_to :users
-* has_one :purchases
+- belongs_to :user
+* has_one :purchase
 
 ## purchasesテーブル
 
@@ -40,9 +40,9 @@
 | user                      | references | foreign_key: true |
 | item                      | references | foreign_key: true |
 
-* has_one :shipping addresses
-- belongs_to :users
-- belongs_to :items
+* has_one :shipping address
+- belongs_to :user
+- belongs_to :item
 
 ## shipping addressesテーブル
 
