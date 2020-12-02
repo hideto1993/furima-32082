@@ -11,7 +11,7 @@
 | second_name               | string     | null: false       |
 | first_name_kana           | string     | null: false       |
 | second_name_kana          | string     | null: false       |
-| birthday                  | date    | null: false       |
+| birthday                  | date       | null: false       |
 
 * has_many :items
 * has_many :purchases
@@ -40,20 +40,20 @@
 | user                      | references | foreign_key: true |
 | item                      | references | foreign_key: true |
 
-* has_one :shipping address
+* has_one :shipping_address
 - belongs_to :user
 - belongs_to :item
 
-## shipping addressesテーブル
+## shipping_addressesテーブル
 
 | Column                    | Type       | Options           |
 |---------------------------|------------|-------------------|
-| prefecture_id             | integer     | null: false       |
+| prefecture_id             | integer    | null: false       |
 | municipalities            | string     | null: false       |
 | address                   | string     | null: false       |
-| building_number           | string     | null: false       |
+| building_number           | string     |                   |
 | postal_code               | string     | null: false       |
 | phone_number              | string     | null: false       |
 | purchase                  | references | foreign_key: true |
 
-- belongs_to :purchases
+- belongs_to :purchase
