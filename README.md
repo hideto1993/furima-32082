@@ -2,51 +2,57 @@
 
 ## usersテーブル
 
-| Column                 | Type       | Options           |
-|------------------------|------------|-------------------|
-| nickname               | string     | null: false       |
-| email                  | string     | null: false       |
-| encrypted_password     | string     | null: false       |
-| first_name             | string     | null: false       |
-| second_name            | string     | null: false       |
-| first_name_kana        | string     | null: false       |
-| second_name_kana       | string     | null: false       |
+| Column                    | Type       | Options           |
+|---------------------------|------------|-------------------|
+| nickname                  | string     | null: false       |
+| email                     | string     | null: false       |
+| encrypted_password        | string     | null: false       |
+| first_name                | string     | null: false       |
+| second_name               | string     | null: false       |
+| first_name_kana           | string     | null: false       |
+| second_name_kana          | string     | null: false       |
 
 * has_many :items
+* has_many :purchases
 
 ## itemsテーブル
 
-| Column                 | Type       | Options           |
-|------------------------|------------|-------------------|
-| title                  | string     | null: false       |
-| category               | string     | null: false       |
-| status                 | string     | null: false       |
-| price                  | string     | null: false       |
-| burden fee             | string     | null: false       |
-| shipping_area          | string     | null: false       |
-| shipping_date_and_time | string     | null: false       |
-| explanation            | text       | null: false       |
-| user                   | references | foreign_key: true |
+| Column                    | Type       | Options           |
+|---------------------------|------------|-------------------|
+| title                     | string     | null: false       |
+| category_id               | integer    | null: false       |
+| status_id                 | integer    | null: false       |
+| price                     | integer    | null: false       |
+| burden fee_id             | integer    | null: false       |
+| shipping_area_id          | integer    | null: false       |
+| shipping_date_and_time_id | integer    | null: false       |
+| explanation               | text       | null: false       |
+| user                      | references | foreign_key: true |
 
 - belongs_to :user
+* has_one :purchases
 
-## purchaseテーブル
+## purchasesテーブル
 
-| Column                 | Type       | Options           |
-|------------------------|------------|-------------------|
-| user                   | references | foreign_key: true |
-| item                   | references | foreign_key: true |
+| Column                    | Type       | Options           |
+|---------------------------|------------|-------------------|
+| user                      | references | foreign_key: true |
+| item                      | references | foreign_key: true |
 
-* has_one :shipping address
+* has_one :shipping addresses
+- belongs_to :user
+- belongs_to :items
 
-## shipping addressテーブル
+## shipping addressesテーブル
 
-| Column                 | Type       | Options           |
-|------------------------|------------|-------------------|
-| municipalities         | string     | null: false       |
-| address                | string     | null: false       |
-| building_number        | string     | null: false       |
-| postal_code            | string     | null: false       |
-| phone_number           | string     | null: false       |
+| Column                    | Type       | Options           |
+|---------------------------|------------|-------------------|
+| prefectures               | string     | null: false       |
+| municipalities            | string     | null: false       |
+| address                   | string     | null: false       |
+| building_number           | string     | null: false       |
+| postal_code               | string     | null: false       |
+| phone_number              | string     | null: false       |
+| purchase                  | references | foreign_key: true |
 
-- belongs_to :purchase
+- belongs_to :purchases
