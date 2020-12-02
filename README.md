@@ -11,6 +11,7 @@
 | second_name               | string     | null: false       |
 | first_name_kana           | string     | null: false       |
 | second_name_kana          | string     | null: false       |
+| birthday                  | integer    | null: false       |
 
 * has_many :items
 * has_many :purchases
@@ -29,7 +30,7 @@
 | explanation               | text       | null: false       |
 | user                      | references | foreign_key: true |
 
-- belongs_to :user
+- belongs_to :users
 * has_one :purchases
 
 ## purchasesテーブル
@@ -40,7 +41,7 @@
 | item                      | references | foreign_key: true |
 
 * has_one :shipping addresses
-- belongs_to :user
+- belongs_to :users
 - belongs_to :items
 
 ## shipping addressesテーブル
