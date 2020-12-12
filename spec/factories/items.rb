@@ -3,7 +3,7 @@ FactoryBot.define do
     title {"hoge"}
     category_id {"2"}
     status_id {"2"}
-    price {"300"}
+    price {300}
     burden_fee_id {"2"}
     prefecture_id {"2"}
     shipping_date_and_time_id {"2"}
