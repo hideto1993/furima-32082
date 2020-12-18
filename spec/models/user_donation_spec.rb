@@ -10,10 +10,9 @@ RSpec.describe UserDonation, type: :model do
       it 'すべての値が正しく入力されていれば保存できること' do
         expect(@user_donation).to be_valid
       end
-      it "tokenが空では登録できないこと" do
-        @user_donation.token = nil
-        @user_donation.valid?
-        expect(@user_donation.errors.full_messages).to include("Token can't be blank")
+      it "building_numberは空でも保存できること" do
+        @user_donation.building_number = nil
+        expect(@user_donation).to be_valid
       end
     end
 

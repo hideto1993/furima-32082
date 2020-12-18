@@ -4,7 +4,7 @@ class CreateShippingAddresses < ActiveRecord::Migration[6.0]
       t.integer :prefecture_id,               null: false
       t.string :municipalities,               null: false
       t.string :address,                      null: false
-      t.string :building_number,              null: false
+      t.string :building_number,
       t.string :postal_code,                  null: false
       t.string :phone_number,                 null: false
       t.references :purchase,                 foreign_key: true
