@@ -10,6 +10,11 @@ RSpec.describe UserDonation, type: :model do
       it 'すべての値が正しく入力されていれば保存できること' do
         expect(@user_donation).to be_valid
       end
+      it "tokenが空では登録できないこと" do
+        @user_donation.token = nil
+        @user_donation.valid?
+        expect(@user_donation.errors.full_messages).to include("Token can't be blank")
+      end
     end
 
     context '住所登録がうまくいかないとき' do
@@ -58,14 +63,20 @@ RSpec.describe UserDonation, type: :model do
         @user_donation.valid?
         expect(@user_donation.errors.full_messages).to include("Phone number ハイフン無しの11桁以内で入力してください")
       end
-      it 'building_numberは空でも保存できること' do
-        @user_donation.building_number = nil
-        expect(@user_donation).to be_valid
-      end
       it "tokenが空では登録できないこと" do
         @user_donation.token = nil
         @user_donation.valid?
         expect(@user_donation.errors.full_messages).to include("Token can't be blank")
+      end
+      it "user_idが空では登録できないこと" do
+        @user_donation.user_id = nil
+        @user_donation.valid?
+        expect(@user_donation.errors.full_messages).to include("User can't be blank")
+      end
+      it "item_idが空では登録できないこと" do
+        @user_donation.item_id = nil
+        @user_donation.valid?
+        expect(@user_donation.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
